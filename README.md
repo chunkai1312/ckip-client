@@ -17,7 +17,7 @@ var CKIPClient = require('ckip-client');
 
 var ckipClient = new CKIPClient(serverIP, serverPort, your_username, your_password);
 
-ckipClient.request('中研院斷詞系統客戶端程式', function (err, response) {
+ckipClient.request('台新金控12月3日將召開股東臨時會進行董監改選。', function (err, response) {
 
   if (err) {
     console.log(err);
@@ -39,6 +39,11 @@ ckipClient.request('中研院斷詞系統客戶端程式', function (err, respon
 
 });
 ```
+
+
+## Reference
+
+[中文斷詞系統](http://ckipsvr.iis.sinica.edu.tw)
 
 
 ## License
