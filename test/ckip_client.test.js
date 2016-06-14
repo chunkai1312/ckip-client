@@ -5,7 +5,6 @@ var ckip = require('../')('0.0.0.0', 0, 'your_username', 'your_password');
 
 describe('CKIPClient', function () {
   var error, response;
-  this.timeout(10000);
 
   before(function (done) {
     ckip.request('台新金控12月3日將召開股東臨時會進行董監改選。', function (err, res) {

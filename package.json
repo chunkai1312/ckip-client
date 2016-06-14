@@ -1,6 +1,6 @@
 {
   "name": "ckip-client",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "CKIP Client for Node.js",
   "author": {
     "name": "Chun-Kai Wang",
@@ -16,18 +16,17 @@
     "url": "git://github.com/chunkai1312/ckip-client.git"
   },
   "dependencies": {
-    "bluebird": "^3.3.3",
+    "bluebird": "^3.4.0",
     "iconv-lite": "^0.4.13",
     "xml2js": "^0.4.16",
     "xmlbuilder": "^4.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0"
+    "mocha": "^2.5.3"
   },
   "scripts": {
-    "test": "gulp"
+    "test": "mocha"
   },
   "license": "MIT"
 }

@@ -1,5 +1,9 @@
 # ckip-client changelog
 
+## 1.0.0 / 2016-06-15
+
+- Remove gulp dependenci
+
 ## 0.0.3 / 2016-03-07
 
 - Promise support 
