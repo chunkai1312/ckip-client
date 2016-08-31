@@ -6,7 +6,7 @@
     "name": "Chun-Kai Wang",
     "email": "chunkai1312@gmail.com"
   },
-  "main": "index",
+  "main": "index.js",
   "keywords": [
     "ckip-client",
     "ckip"
@@ -16,17 +16,22 @@
     "url": "git://github.com/chunkai1312/ckip-client.git"
   },
   "dependencies": {
-    "bluebird": "^3.4.0",
+    "bluebird": "^3.4.4",
     "iconv-lite": "^0.4.13",
-    "xml2js": "^0.4.16",
+    "xml2js": "^0.4.17",
     "xmlbuilder": "^4.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.5.3"
+    "eslint": "^3.4.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "mocha": "^3.0.2"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint index.js lib test"
   },
   "license": "MIT"
 }
