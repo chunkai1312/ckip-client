@@ -1,3 +1,1 @@
-'use strict';
-
-module.exports = require('./lib/ckip_client');
+module.exports = require('./lib/ckip_client')
