@@ -2,6 +2,8 @@
 
 > CKIP Client for Node.js
 
+[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 ## Install
 
 ```sh
@@ -50,7 +52,7 @@ ckip.request('台新金控12月3日將召開股東臨時會進行董監改選。
   .then(function (results) {
     console.log(results[0]);  // [ '　台新(N)　金控(N)　12月(N)　3日(N)　將(ADV)　召開(Vt)
                               // 　股東(N)　臨時會(N)　進行(Vt)　董監(N)　改選(Nv)　。(PERIODCATEGORY)' ]
-                              
+
     console.log(results[1]);  // [ { term: '台新', tag: 'N' },
                               //   { term: '金控', tag: 'N' },
                               //   { term: '12月', tag: 'N' },
@@ -77,7 +79,7 @@ ckip.request('台新金控12月3日將召開股東臨時會進行董監改選。
 
 MIT © [Chun-Kai Wang]()
 
-[npm-image]: https://badge.fury.io/js/ckip-client.svg
+[npm-image]: https://img.shields.io/npm/v/ckip-client.svg
 [npm-url]: https://npmjs.org/package/ckip-client
 [travis-image]: https://travis-ci.org/chunkai1312/ckip-client.svg?branch=master
 [travis-url]: https://travis-ci.org/chunkai1312/ckip-client

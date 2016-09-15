@@ -1,32 +1,38 @@
 {
   "name": "ckip-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CKIP Client for Node.js",
-  "author": {
-    "name": "Chun-Kai Wang",
-    "email": "chunkai1312@gmail.com"
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint lib test"
   },
-  "main": "index",
-  "keywords": [
-    "ckip-client",
-    "ckip"
-  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/chunkai1312/ckip-client.git"
   },
+  "keywords": [
+    "ckip-client",
+    "ckip"
+  ],
+  "author": "Chun-Kai Wang <chunkai1312@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chunkai1312/ckip-client/issues"
+  },
+  "homepage": "https://github.com/chunkai1312/ckip-client#readme",
   "dependencies": {
-    "bluebird": "^3.4.0",
+    "bluebird": "^3.4.4",
     "iconv-lite": "^0.4.13",
-    "xml2js": "^0.4.16",
+    "xml2js": "^0.4.17",
     "xmlbuilder": "^4.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.5.3"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "license": "MIT"
+    "eslint": "^3.4.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "mocha": "^3.0.2"
+  }
 }
