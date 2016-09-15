@@ -2,8 +2,6 @@
 
 > CKIP Client for Node.js
 
-[![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
 ## Install
 
 ```sh
