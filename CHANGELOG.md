@@ -1,5 +1,10 @@
 # ckip-client changelog
 
+## 1.1.1 / 2017-01-09
+
+- Use sinon for stubbing in test
+- Rewrite test cases
+
 ## 1.1.0 / 2016-09-18
 
 - Refactor and use [JavaScript Standard Style](http://standardjs.com/)
