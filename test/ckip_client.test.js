@@ -6,7 +6,7 @@ var expect = require('chai').expect
 var sinon = require('sinon')
 var ckip = require('../')('0.0.0.0', 0, 'username', 'password')
 
-const mockResponse = fs.readFileSync(path.resolve(__dirname, 'mock.xml'), 'utf-8')
+var mockResponse = fs.readFileSync(path.resolve(__dirname, 'mock.xml'), 'utf-8')
 
 describe('CKIPClient', function () {
   var sandbox
