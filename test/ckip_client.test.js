@@ -2,6 +2,7 @@
 
 var fs = require('fs')
 var path = require('path')
+var Promise = require('bluebird')
 var expect = require('chai').expect
 var sinon = require('sinon')
 var ckip = require('../')('0.0.0.0', 0, 'username', 'password')
