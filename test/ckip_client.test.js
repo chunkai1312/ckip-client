@@ -63,6 +63,21 @@ describe('CKIPClient', function () {
         expect(setences).to.be.eql(expected)
       })
     })
+
+    it('should exist error if invalid xml formatted format', function () {
+      ckip.getSentences('invalid xml', function (err, setences) {
+        expect(err).to.exist
+        expect(err).to.be.an('error')
+        expect(setences).to.not.exist
+      })
+    })
+
+    it('should throw error if invalid xml formatted format', function () {
+      return ckip.getSentences('invalid xml')
+        .catch(function (err) {
+          expect(err).to.be.an('error')
+        })
+    })
   })
 
   describe('#getTerms()', function () {
@@ -97,6 +112,21 @@ describe('CKIPClient', function () {
         expect(terms).to.be.an('array')
         expect(terms).to.be.eql(expected)
       })
+    })
+
+    it('should exist error if invalid xml formatted format', function () {
+      ckip.getTerms('invalid xml', function (err, terms) {
+        expect(err).to.exist
+        expect(err).to.be.an('error')
+        expect(terms).to.not.exist
+      })
+    })
+
+    it('should throw error if invalid xml formatted format', function () {
+      return ckip.getTerms('invalid xml')
+        .catch(function (err) {
+          expect(err).to.be.an('error')
+        })
     })
   })
 })
