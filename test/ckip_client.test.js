@@ -3,6 +3,7 @@
 var fs = require('fs')
 var path = require('path')
 var Promise = require('bluebird')
+var iconv = require('iconv-lite')
 var expect = require('chai').expect
 var sinon = require('sinon')
 var ckip = require('../')('0.0.0.0', 0, 'username', 'password')
@@ -11,6 +12,7 @@ var mockResponse = fs.readFileSync(path.resolve(__dirname, 'mock.xml'), 'utf-8')
 
 describe('CKIPClient', function () {
   var sandbox
+  this.timeout(50000)
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
@@ -23,8 +25,8 @@ describe('CKIPClient', function () {
   describe('#request()', function () {
     var text = '台新金控12月3日將召開股東臨時會進行董監改選。'
 
-    it('should get response without error if initial parameters are valid', function (done) {
-      sandbox.stub(ckip, 'request').withArgs(text).yields(null, mockResponse)
+    it('should get response without error', function (done) {
+      sandbox.stub(ckip, 'connect').returns(Promise.resolve(iconv.encode(mockResponse, 'big5')))
 
       ckip.request(text, function (err, res) {
         expect(err).to.not.exist
@@ -34,11 +36,31 @@ describe('CKIPClient', function () {
     })
 
     it('should return promise with response', function () {
-      sandbox.stub(ckip, 'request').withArgs(text).returns(Promise.resolve(mockResponse))
+      sandbox.stub(ckip, 'connect').returns(Promise.resolve(iconv.encode(mockResponse, 'big5')))
 
       return ckip.request(text)
         .then(function (res) {
           expect(res).to.equal(mockResponse)
+        })
+    })
+
+    it('should exist error if cannot connect to CKIP server', function (done) {
+      sandbox.stub(ckip, 'connect').returns(Promise.reject(new Error()))
+
+      ckip.request(text, function (err, res) {
+        expect(err).to.exist
+        expect(err).to.be.an('error')
+        expect(res).to.not.exist
+        done()
+      })
+    })
+
+    it('should throw error if cannot connect to CKIP server', function () {
+      sandbox.stub(ckip, 'connect').returns(Promise.reject(new Error()))
+
+      return ckip.request(text)
+        .catch(function (err) {
+          expect(err).to.be.an('error')
         })
     })
   })
