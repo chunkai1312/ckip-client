@@ -1,6 +1,6 @@
 {
   "name": "ckip-client",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "CKIP Client for Node.js",
   "main": "index.js",
   "scripts": {
