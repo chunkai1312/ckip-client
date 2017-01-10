@@ -4,7 +4,8 @@
   "description": "CKIP Client for Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js",
+    "test": "nyc mocha test/**/*.test.js",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint lib test"
   },
   "repository": {
@@ -29,11 +30,13 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "codecov": "^1.0.1",
     "eslint": "^3.13.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.2.0",
+    "nyc": "^10.0.0",
     "sinon": "^1.17.7"
   }
 }
