@@ -1,6 +1,8 @@
 # ckip-client changelog
 
-## 1.1.2 / 2017-01-11
+## 1.2.0 / 2017-01-11
+- Add ckip.connect()
+- Refactor ckip.request()
 - Add test coverage
 
 ## 1.1.1 / 2017-01-09
