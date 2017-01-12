@@ -12,7 +12,6 @@ var mockResponse = fs.readFileSync(path.resolve(__dirname, 'mock.xml'), 'utf-8')
 
 describe('CKIPClient', function () {
   var sandbox
-  this.timeout(50000)
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create()
