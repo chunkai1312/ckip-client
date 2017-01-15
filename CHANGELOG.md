@@ -1,5 +1,8 @@
 # ckip-client changelog
 
+## 1.2.1 / 2017-01-15
+- Update README.md to fix badges
+
 ## 1.2.0 / 2017-01-11
 - Add ckip.connect()
 - Refactor ckip.request()
