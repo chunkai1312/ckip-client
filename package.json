@@ -1,6 +1,6 @@
 {
   "name": "ckip-client",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "CKIP Client for Node.js",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,10 @@
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint lib test"
   },
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/chunkai1312/ckip-client.git"
