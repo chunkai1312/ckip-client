@@ -27,10 +27,7 @@
   },
   "homepage": "https://github.com/chunkai1312/ckip-client#readme",
   "dependencies": {
-    "bluebird": "^3.4.7",
-    "iconv-lite": "^0.4.15",
-    "xml2js": "^0.4.17",
-    "xmlbuilder": "^8.2.2"
+    "xml2js": "^0.4.17"
   },
   "devDependencies": {
     "chai": "^3.5.0",
