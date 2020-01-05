@@ -38,6 +38,6 @@
     "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.2.0",
     "nyc": "^10.0.0",
-    "sinon": "^1.17.7"
+    "testdouble": "^3.12.5"
   }
 }
