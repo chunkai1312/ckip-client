@@ -8,16 +8,17 @@ const CKIPResponse = require('../lib/ckip_response')
 describe('CKIPResponse', () => {
   describe('#constructor()', () => {
     it('should be instantiated', () => {
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/success.xml'))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_success.xml'))
       const response = new CKIPResponse(data)
       expect(response).to.be.an.instanceof(CKIPResponse)
       expect(response.data).to.be.an.instanceof(Buffer)
+      expect(response.data.toString()).to.equal(data.toString())
     })
   })
 
   describe('#segment()', () => {
     it('should segment', async () => {
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/success.xml'))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_success.xml'))
       const response = new CKIPResponse(data)
       const sentences = await response.segment()
       const words = sentences[0]
@@ -26,7 +27,7 @@ describe('CKIPResponse', () => {
     })
 
     it('should segment with POS tagging', async () => {
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/success.xml'))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_success.xml'))
       const response = new CKIPResponse(data)
       const sentences = await response.segment({ tag: true })
       const words = sentences[0]
@@ -48,7 +49,7 @@ describe('CKIPResponse', () => {
     })
 
     it('should throw error if authentication failed', async () => {
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/error.xml'))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_error.xml'))
       const response = new CKIPResponse(data)
       try {
         await response.segment()

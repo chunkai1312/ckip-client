@@ -2,29 +2,27 @@
 
 const fs = require('fs')
 const path = require('path')
+const net = require('net')
+const events = require('events')
 const expect = require('chai').expect
-const td = require('testdouble')
-const EventEmitter = require('events').EventEmitter
-const net = td.replace('net')
+const sinon = require('sinon')
 const CKIPClient = require('../lib/ckip_client')
 
 describe('CKIPClient', () => {
-  let client
+  let sandbox, client
 
   beforeEach(() => {
-    client = new EventEmitter()
-    client.connect = td.func()
-    client.write = td.func()
-    client.end = td.func()
-    client.destroy = td.func()
+    sandbox = sinon.createSandbox()
 
-    td.when(new net.Socket()).thenReturn(client)
-    td.when(client.end()).thenDo(() => client.removeAllListeners())
-    td.when(client.destroy()).thenDo(() => client.removeAllListeners())
+    client = new events.EventEmitter()
+    client.end = sinon.fake(() => client.removeAllListeners())
+    client.destroy = sinon.fake(() => client.removeAllListeners())
+
+    sandbox.stub(net, 'Socket').callsFake(() => client)
   })
 
   afterEach(() => {
-    td.reset()
+    sandbox.restore()
   })
 
   describe('#constructor()', () => {
@@ -41,10 +39,9 @@ describe('CKIPClient', () => {
 
   describe('#segment()', () => {
     it('should segment', async () => {
-      const anything = td.matchers.anything()
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/success.xml'))
-      td.when(client.connect(anything, anything)).thenDo(() => client.emit('connect'))
-      td.when(client.write(anything)).thenDo(() => client.emit('data', data))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_success.xml'))
+      client.connect = sinon.fake(() => client.emit('connect'))
+      client.write = sinon.fake(() => client.emit('data', data))
 
       const ckip = new CKIPClient({
         host: '0.0.0.0',
@@ -59,10 +56,9 @@ describe('CKIPClient', () => {
     })
 
     it('should segment with POS tagging', async () => {
-      const anything = td.matchers.anything()
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/success.xml'))
-      td.when(client.connect(anything, anything)).thenDo(() => client.emit('connect'))
-      td.when(client.write(anything)).thenDo(() => client.emit('data', data))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_success.xml'))
+      client.connect = sinon.fake(() => client.emit('connect'))
+      client.write = sinon.fake(() => client.emit('data', data))
 
       const ckip = new CKIPClient({
         host: '0.0.0.0',
@@ -90,10 +86,9 @@ describe('CKIPClient', () => {
     })
 
     it('should throw error if authentication failed', async () => {
-      const anything = td.matchers.anything()
-      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/error.xml'))
-      td.when(client.connect(anything, anything)).thenDo(() => client.emit('connect'))
-      td.when(client.write(anything)).thenDo(() => client.emit('data', data))
+      const data = fs.readFileSync(path.resolve(__dirname, './fixtures/response_error.xml'))
+      client.connect = sinon.fake(() => client.emit('connect'))
+      client.write = sinon.fake(() => client.emit('data', data))
 
       try {
         const ckip = new CKIPClient({
@@ -109,8 +104,7 @@ describe('CKIPClient', () => {
     })
 
     it('should throw error if cannot connect to CKIP server', async () => {
-      const anything = td.matchers.anything()
-      td.when(client.connect(anything, anything)).thenDo(() => client.emit('error', new Error()))
+      client.connect = sinon.fake(() => client.emit('error', new Error()))
 
       try {
         const ckip = new CKIPClient({
@@ -126,4 +120,3 @@ describe('CKIPClient', () => {
     })
   })
 })
-
