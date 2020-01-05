@@ -20,7 +20,7 @@ const CKIPClient = require('ckip-client')
 const ckip = new CKIPClient({ host, port, user, pass })
 
 ckip.segment('台新金控12月3日將召開股東臨時會進行董監改選。')
-  .then(setences => console.log(setences))
+  .then(sentences => console.log(sentences))
 
 // [ [ '台新', '金控', '12月', '3日', '將', '召開', '股東', '臨時會', '進行', '董監', '改選', '。' ] ]
 ```
@@ -29,7 +29,7 @@ ckip.segment('台新金控12月3日將召開股東臨時會進行董監改選。
 
 ```js
 ckip.segment('台新金控12月3日將召開股東臨時會進行董監改選。', { tag: true })
-  .then(setences => console.log(setences))
+  .then(sentences => console.log(sentences))
 
 // [ [ { word: '台新', tag: 'N' },
 //     { word: '金控', tag: 'N' },
